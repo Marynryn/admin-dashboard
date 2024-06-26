@@ -3,37 +3,17 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("fonts/HelveticaNeueRegular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("fonts/HelveticaNeueBold.otf") format("opentype");
-
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("fonts/HelveticaNeueMedium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-}
-
 body,
 html {
   margin: 0;
   color: #11101c;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
+  font-weight: 500;
   width: 100%;
   overflow-x: hidden;
-  background-color: rgb(167 243 208);
+  background-color: #f7f8fa;
 }
 
 ul {

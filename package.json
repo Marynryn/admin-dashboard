@@ -1,8 +1,8 @@
 {
-  "name": "events-application",
+  "name": "admin-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Marynryn.github.io/events-app/",
+  "homepage": "https://Marynryn.github.io/admin-dashboard/",
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@mui/material": "^5.15.14",
