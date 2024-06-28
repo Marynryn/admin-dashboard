@@ -2,10 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
-import { eventsReducer } from "./reducer";
+import { adminDashboardReducer } from "./reducer";
 
 const rootReducer = combineReducers({
-  events: eventsReducer,
+  adminDashboard: adminDashboardReducer,
 });
 
 const persistConfig = {

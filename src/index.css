@@ -1,7 +1,4 @@
 @import-normalize; /* bring in normalize.css styles */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
 body,
 html {
@@ -12,8 +9,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
   width: 100%;
-  overflow-x: hidden;
-  background-color: #f7f8fa;
+  /* overflow-x: hidden; */
+  background-color: var(--background-2);
 }
 
 ul {
@@ -30,4 +27,13 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+:root {
+  --main-black: #1d1e21;
+  --green: #59b17a;
+  --red: #e85050;
+  --accent: #dcdddf;
+  --background: #e7f1ed;
+  --background-2: #f7f8fa;
+  --white: #fff;
 }

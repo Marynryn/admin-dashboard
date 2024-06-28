@@ -1,77 +1,75 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  eventRegistration,
-  fetchEvents,
-  fetchParticipants,
-} from "./operations";
+import { login } from "./operations";
 
 const mySlice = createSlice({
-  name: "events",
+  name: "adminDashboard",
   initialState: {
-    items: [],
+    user: {
+      email: null,
+    },
+    loggedIn: false,
+    token: null,
+    dashboard: null,
     isLoading: false,
     error: null,
-    participants: [],
-    filter: "showAll",
-    participantsFilter: "",
+    orders: [],
+    suppliers: [],
+    customers: [],
+    products: [],
   },
 
-  reducers: {
-    setFilter: (state, action) => {
-      state.filter = action.payload;
-    },
-    deselectFilter: (state) => {
-      state.filter = "";
-    },
-    addFilter: (state, action) => {
-      state.participantsFilter = action.payload;
-    },
-  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchEvents.pending, (state, action) => {
+      .addCase(login.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(fetchEvents.fulfilled, (state, action) => {
-      
-        state.isLoading = false;
-        state.error = null;
-
-        state.items = action.payload;
+      .addCase(login.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.user.email = action.payload.user.email;
+        state.loggedIn = true;
       })
-      .addCase(fetchEvents.rejected, (state, action) => {
-   
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(eventRegistration.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(eventRegistration.fulfilled, (state, action) => {
-      
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(eventRegistration.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(fetchParticipants.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchParticipants.fulfilled, (state, action) => {
-       
-        state.isLoading = false;
-        state.error = null;
-        state.participants = action.payload;
-      })
-      .addCase(fetchParticipants.rejected, (state, action) => {
-       
+      .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
+
+    // .addCase(fetchEvents.pending, (state, action) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(fetchEvents.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = null;
+
+    //   state.items = action.payload;
+    // })
+    // .addCase(fetchEvents.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // })
+    // .addCase(eventRegistration.pending, (state, action) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(eventRegistration.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = null;
+    // })
+    // .addCase(eventRegistration.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // })
+    // .addCase(fetchParticipants.pending, (state, action) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(fetchParticipants.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = null;
+    //   state.participants = action.payload;
+    // })
+    // .addCase(fetchParticipants.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // });
   },
 });
 
-export const eventsReducer = mySlice.reducer;
-export const { setFilter, deselectFilter, addFilter } = mySlice.actions;
+export const adminDashboardReducer = mySlice.reducer;

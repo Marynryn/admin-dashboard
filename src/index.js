@@ -7,6 +7,8 @@ import { persistor, store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import Loader from "components/Loader/Loader";
+import "normalize.css/normalize.css";
+import "@blueprintjs/core/lib/css/blueprint.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
