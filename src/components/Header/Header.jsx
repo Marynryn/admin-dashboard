@@ -9,10 +9,11 @@ import { useLocation } from 'react-router-dom';
 import { selectUser } from 'store/selectors';
 import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg'
-import Modal from 'components/Modal/Modal';
-import Sidebar from 'components/Sidebar/Sidebar';
+
+
 import MobileMenu from 'components/MobileMenu/MobileMenu';
 import LogOutButton from 'components/LogOutButton/LogOutButton';
+import SidebarMenu from 'components/SidebarMenu/SidebarMenu';
 
 const ContainerLogo = styled("div")`
     display: flex;
@@ -24,9 +25,21 @@ const ContainerLogo = styled("div")`
     
   `;
 const Container = styled("div")`
+position: relative;
     display: flex;
+    padding-bottom: 15px;
     justify-content: flex-start;
 gap: 20px;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0; 
+        left: -20px;
+        right: -20px;
+        height: 1px; 
+        background-color: rgba(29, 30, 33, 0.10); 
+    }
+
    @media(min-width: 768px) {
   gap: 16px;
 }
@@ -114,9 +127,10 @@ const Header = () => {
         </Container>
         <MobileMenu isOpen={modalOpen} onClose={setModalOpen}>
 
-            <Sidebar />
-            <LogOutButton />
-
+            <SidebarMenu />
+            <div style={{ marginBottom: 0, marginTop: "auto" }}>
+                <LogOutButton />
+            </div>
         </MobileMenu>
 
     </>

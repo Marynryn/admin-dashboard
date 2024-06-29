@@ -9,6 +9,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
   width: 100%;
+  outline: none;
   /* overflow-x: hidden; */
   background-color: var(--background-2);
 }

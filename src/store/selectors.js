@@ -1,5 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
-
 export const selectIsLoggedIn = (state) => state.adminDashboard.loggedIn;
 export const selectUser = (state) => state.adminDashboard.user;
 // export const selectGetParticipants = (state) => state.events.participants;

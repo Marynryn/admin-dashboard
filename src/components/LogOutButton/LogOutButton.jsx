@@ -13,7 +13,8 @@ display: flex;
 background-color: var(--green);
 border: none;
     @media(min-width: 768px) {
-  width: 44px;}
+  width: 44px;
+  height: 44px;}
 `;
 const Svg = styled("svg")`
     width: 14px;

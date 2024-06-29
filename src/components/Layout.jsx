@@ -9,13 +9,10 @@ import styled from 'styled-components';
 
 const Container = styled('div')`
    padding: 17px 20px 20px;
+   min-height: 100vh;
 `;
-const SidebarContainer = styled('div')`
-display: none;
-   @media(min-width: 1440px) {
-display: block;
-}
-`;
+
+
 export const Layout = () => {
 
 
@@ -24,13 +21,13 @@ export const Layout = () => {
 
             <Suspense fallback={<Loader />}>
                 <Header />
-                <SidebarContainer>
+                <div style={{ display: "flex", height: "calc(100vh - 105px )" }}>
                     <Sidebar />
-                </SidebarContainer>
-
-                <Outlet />
 
 
+                    <Outlet />
+
+                </div>
             </Suspense>
             <Toaster position="top-right" reverseOrder={false} />
         </Container>
