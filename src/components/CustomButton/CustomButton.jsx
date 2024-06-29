@@ -27,7 +27,7 @@ color: ${({ cancel }) => (cancel ? 'var(--green)' : '#fff')};
     background-color: rgba(29, 30, 33, 0.1);
     color: rgba(29, 30, 33, 0.4);
 }
-@media(max-width: 768px) {
+@media(min-width: 768px) {
     font-size: 14px;
 
 }

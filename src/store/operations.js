@@ -22,6 +22,16 @@ export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const logOut = createAsyncThunk("user/logout", async (_, thunkAPI) => {
+  try {
+    const { data } = await api.post("user/logout");
+
+    clearAuthHeader();
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 // export const fetchEvents = createAsyncThunk("events", async (_, thunkAPI) => {
 //   try {
 //     const events = await api.get("/");

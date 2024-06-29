@@ -21,7 +21,7 @@ export const App = () => {
         <RestrictedRoute redirectTo="/" component={<Registration />} />
       } />
       <Route path="/" element={<PrivateRoute component={<Layout />} redirectTo="/login" />} >
-
+        <Route index element={<Navigate to="/dashboard" />} />
         <Route
           path="/dashboard"
           element={<Dashboard />} />
@@ -41,7 +41,6 @@ export const App = () => {
 
 
 
-        {/* <Route path="/:id/participants" element={<Participants />} /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
 

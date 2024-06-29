@@ -1,22 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./operations";
+import { logOut, login } from "./operations";
 
+const initialState = {
+  user: {
+    email: null,
+  },
+  loggedIn: false,
+  token: null,
+  dashboard: null,
+  isLoading: false,
+  error: null,
+  orders: [],
+  suppliers: [],
+  customers: [],
+  products: [],
+};
 const mySlice = createSlice({
   name: "adminDashboard",
-  initialState: {
-    user: {
-      email: null,
-    },
-    loggedIn: false,
-    token: null,
-    dashboard: null,
-    isLoading: false,
-    error: null,
-    orders: [],
-    suppliers: [],
-    customers: [],
-    products: [],
-  },
+  initialState,
 
   extraReducers: (builder) => {
     builder
@@ -31,8 +32,22 @@ const mySlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(logOut.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.user = initialState.user;
+        state.loggedIn = initialState.loggedIn;
+        state.error = initialState.error;
+        state.isLoading = initialState.isLoading;
+        state.dashboard = initialState.dashboard;
+      })
 
+      .addCase(logOut.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
     // .addCase(fetchEvents.pending, (state, action) => {
     //   state.isLoading = true;
     // })
