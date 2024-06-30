@@ -1,6 +1,6 @@
 export const selectIsLoggedIn = (state) => state.adminDashboard.loggedIn;
 export const selectUser = (state) => state.adminDashboard.user;
-// export const selectGetParticipants = (state) => state.events.participants;
+export const selectGetDashboard = (state) => state.adminDashboard.dashboard;
 export const selectIsLoading = (state) => state.adminDashboard.isLoading;
 // export const selectError = (state) => state.events.error;
 // export const selectGetParticipantsFilter = (state) =>

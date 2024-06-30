@@ -1,4 +1,4 @@
-import Logo from "components/Loader/Logo/Logo";
+import Logo from "components/Logo/Logo";
 import RegistrationForm from "components/RegistrationForm/RegistrationForm";
 import WelcomeText from "components/WelcomeText/WelcomeText";
 import styled from "styled-components";

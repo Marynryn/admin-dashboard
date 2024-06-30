@@ -4,13 +4,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const api = axios.create({
   baseURL: "https://admin-dashboard-backend-9vkj.onrender.com/api/",
 });
+
 const setAuthHeader = (token) => {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  localStorage.setItem("token", token);
 };
 
 const clearAuthHeader = () => {
   api.defaults.headers.common.Authorization = "";
+  localStorage.removeItem("token");
 };
+
 export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
   try {
     const res = await api.post("user/login", user);
@@ -22,6 +26,7 @@ export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const logOut = createAsyncThunk("user/logout", async (_, thunkAPI) => {
   try {
     const { data } = await api.post("user/logout");
@@ -32,15 +37,25 @@ export const logOut = createAsyncThunk("user/logout", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
-// export const fetchEvents = createAsyncThunk("events", async (_, thunkAPI) => {
-//   try {
-//     const events = await api.get("/");
 
-//     return events.data;
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
+export const getDashboard = createAsyncThunk(
+  "dashboard",
+  async (_, thunkAPI) => {
+    try {
+      const dashboard = await api.get("/dashboard");
+
+      return dashboard.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+const token = localStorage.getItem("token");
+if (token) {
+  setAuthHeader(token);
+}
+
 // export const eventRegistration = createAsyncThunk(
 //   "events/addParticipants",
 //   async ({ id, data }, { rejectWithValue }) => {

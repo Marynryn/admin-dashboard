@@ -1,10 +1,17 @@
 import { ThreeCircles } from "react-loader-spinner"
+import styled from "styled-components";
 
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+`;
 
 
 const Loader = () => {
     return (
-        <div className="flex justify-center items-center m-auto h-screen">
+        <Container>
             <ThreeCircles
                 height="200"
                 width="200"
@@ -17,7 +24,7 @@ const Loader = () => {
                 innerCircleColor=""
                 middleCircleColor=""
 
-            /></div>
+            /></Container>
     )
 }
 export default Loader

@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logOut, login } from "./operations";
+import { getDashboard, logOut, login } from "./operations";
 
 const initialState = {
   user: {
     email: null,
   },
   loggedIn: false,
-  token: null,
+  token: localStorage.getItem("token") || null,
   dashboard: null,
   isLoading: false,
   error: null,
@@ -47,20 +47,19 @@ const mySlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(getDashboard.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getDashboard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.dashboard = action.payload;
+      })
+      .addCase(getDashboard.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
-    // .addCase(fetchEvents.pending, (state, action) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(fetchEvents.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-
-    //   state.items = action.payload;
-    // })
-    // .addCase(fetchEvents.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // })
     // .addCase(eventRegistration.pending, (state, action) => {
     //   state.isLoading = true;
     // })

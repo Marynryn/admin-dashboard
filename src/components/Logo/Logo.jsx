@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 // import sprite from '../../../img/svg/symbol-defs.svg'
-import logoImage from '../../../img/img/logo.png';
-import logoImage2 from '../../../img/img/logo2.png';
-import { useLocation } from 'react-router-dom';
+import logoImage from '../../img/img/logo.png';
+import logoImage2 from '../../img/img/logo2.png';
+import { NavLink, useLocation } from 'react-router-dom';
 const Image = styled("img")`
        width: ${({ isLoginPage }) => (isLoginPage ? '44px' : '32px')};
   height: ${({ isLoginPage }) => (isLoginPage ? '44px' : '32px')};
@@ -26,8 +26,9 @@ const Logo = () => {
     const imageLogo = isLoginPage ? logoImage : logoImage2
     return (
         <Container>
-
-            <Image src={imageLogo} alt='logo' />
+            <NavLink to="/" style={{ height: "32px", outline: "none" }}>
+                <Image src={imageLogo} alt='logo' />
+            </NavLink>
         </Container>
     )
 }

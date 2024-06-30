@@ -1,6 +1,6 @@
 
 import Line from 'components/Line/Line';
-import Logo from 'components/Loader/Logo/Logo';
+import Logo from 'components/Logo/Logo';
 import SubTitle from 'components/SubTitle/SubTitle';
 import Title from 'components/Title/Title';
 import React, { useState } from 'react'

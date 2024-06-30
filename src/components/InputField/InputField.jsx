@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const InputField = ({ name, type, placeholder }) => {
     const { register } = useFormContext();
-    const StyledInput = styled('input')`
+    const StyledInput = styled.input`
 outline: none;
 margin-bottom: 14px;
 border-radius: 60px;
