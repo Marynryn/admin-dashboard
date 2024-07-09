@@ -55,6 +55,22 @@ const token = localStorage.getItem("token");
 if (token) {
   setAuthHeader(token);
 }
+export const getOrders = createAsyncThunk(
+  "ALLOrders",
+  async ({ query }, thunkAPI) => {
+    try {
+      let url = "/orders";
+      if (query && query.name) {
+        url += `?name=${query.name}`;
+      }
+      const { data } = await api.get(url);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // export const eventRegistration = createAsyncThunk(
 //   "events/addParticipants",

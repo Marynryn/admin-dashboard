@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import sprite from '../../img/svg/symbol-defs.svg'
 import SubTitle from 'components/SubTitle/SubTitle';
+import { formatNumber } from 'helpers/formatNumber';
 const Container = styled.div`
     width: 157px;
 height: 98px;
@@ -17,17 +18,17 @@ const Value = styled.h3`
  
     margin-top: 32px;
 `
-const StatisticsItem = ({ name, value }) => {
+const StatisticsItem = ({ name, value, icon }) => {
 
     return (
         <Container>
             <div style={{ display: "flex", gap: "8px" }}>
-                <svg width={18} height={18} style={{ stroke: "var(--main-black)", fill: "white" }}>
-                    <use href={`${sprite}#icon-cash`}></use>
+                <svg width={18} height={18} style={{ stroke: "var(--main-black)", fill: "white", strokeWidth: 1 }}>
+                    <use href={`${sprite}${icon}`}></use>
                 </svg>
                 <SubTitle>{name}</SubTitle>
             </div>
-            <Value>{value}</Value>
+            <Value>{formatNumber(value)}</Value>
 
         </Container>
     )

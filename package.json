@@ -4,7 +4,8 @@
   "private": true,
   "homepage": "https://Marynryn.github.io/admin-dashboard/",
   "dependencies": {
-    "@blueprintjs/core": "^5.10.3",
+    "@blueprintjs/core": "^5.10.5",
+    "@blueprintjs/table": "^5.1.7",
     "@hookform/resolvers": "^3.3.4",
     "@mui/material": "^5.15.14",
     "@reduxjs/toolkit": "^2.2.1",

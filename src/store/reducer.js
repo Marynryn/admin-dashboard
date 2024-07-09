@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDashboard, logOut, login } from "./operations";
+import { getDashboard, getOrders, logOut, login } from "./operations";
 
 const initialState = {
   user: {
@@ -7,7 +7,7 @@ const initialState = {
   },
   loggedIn: false,
   token: localStorage.getItem("token") || null,
-  dashboard: null,
+  dashboard: [],
   isLoading: false,
   error: null,
   orders: [],
@@ -57,6 +57,18 @@ const mySlice = createSlice({
         state.dashboard = action.payload;
       })
       .addCase(getDashboard.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(getOrders.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.orders = action.payload;
+      })
+      .addCase(getOrders.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

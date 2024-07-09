@@ -2,7 +2,6 @@
 
 body,
 html {
-  margin: 0;
   color: #11101c;
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,10 +9,17 @@ html {
   font-weight: 500;
   width: 100%;
   outline: none;
-  /* overflow-x: hidden; */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
   background-color: var(--background-2);
 }
-
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 ul {
   list-style: none;
 }

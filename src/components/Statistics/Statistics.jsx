@@ -3,11 +3,14 @@ import React from 'react'
 
 
 const Statistics = ({ props }) => {
-    const { totalProducts, totalCustomers, totalSuppliers } = props
+
+
+    const { totalProducts, totalCustomers, totalSuppliers } = props;
+
     const arr = [
-        { name: "All Products", value: totalProducts },
-        { name: "All Customers", value: totalCustomers },
-        { name: "All Suppliers", value: totalSuppliers }
+        { name: "All Products", value: totalProducts, icon: "#icon-cash" },
+        { name: "All Customers", value: totalCustomers, icon: "#icon-cash" },
+        { name: "All Suppliers", value: totalSuppliers, icon: "#icon-users" }
     ];
 
     return (

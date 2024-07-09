@@ -1,3 +1,5 @@
+import Operations from 'components/Operations/Operations';
+import RecentCustomers from 'components/RecentCustomers/RecentCustomers';
 import Statistics from 'components/Statistics/Statistics';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +9,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     padding-top: 20px;
-     padding-bottom: 20px;
+     
 `;
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -15,10 +17,13 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getDashboard());
     }, [dispatch])
+    if (dashboard.length === 0) return null;
 
     return (
         <Container>
             <Statistics props={dashboard} />
+            <RecentCustomers props={dashboard.recentCustomers} />
+            <Operations props={dashboard.operations} />
         </Container>
     )
 }
