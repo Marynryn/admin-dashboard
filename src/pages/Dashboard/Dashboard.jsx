@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     padding-top: 20px;
+    width: 100%;
      
 `;
 const Dashboard = () => {

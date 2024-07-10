@@ -11,6 +11,7 @@ const StyledButton = styled('button')`
   border: none;
   font-size: 12px;
   display:  flex;
+  gap: 8px;
   justify-content: center;
 align-items: center;
   color:${({ cancel }) => (cancel ? 'rgba(29, 30, 33, 0.4)' : '#fff')};;
@@ -34,7 +35,7 @@ color: ${({ cancel }) => (cancel ? 'var(--green)' : '#fff')};
 `;
 
 const CustomButton = ({ cancel, ...props }) => {
-    return <StyledButton cancel={cancel} {...props} />;
+  return <StyledButton cancel={cancel} {...props} />;
 };
 
 

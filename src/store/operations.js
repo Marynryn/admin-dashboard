@@ -56,15 +56,21 @@ if (token) {
   setAuthHeader(token);
 }
 export const getOrders = createAsyncThunk(
-  "ALLOrders",
-  async ({ query }, thunkAPI) => {
+  "orders/getOrders",
+  async ({ query = "" }, thunkAPI) => {
     try {
-      let url = "/orders";
-      if (query && query.name) {
-        url += `?name=${query.name}`;
-      }
-      const { data } = await api.get(url);
-      console.log(data);
+      const { data } = await api.get(`/orders?name=${query}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getProducts = createAsyncThunk(
+  "orders/getProducts",
+  async ({ query = "" }, thunkAPI) => {
+    try {
+      const { data } = await api.get(`/products?name=${query}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -72,18 +78,18 @@ export const getOrders = createAsyncThunk(
   }
 );
 
-// export const eventRegistration = createAsyncThunk(
-//   "events/addParticipants",
-//   async ({ id, data }, { rejectWithValue }) => {
-//     console.log(id, data);
-//     try {
-//       const contact = await api.patch(`/${id}/signup`, data);
-//       return contact.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+export const productDelete = createAsyncThunk(
+  "/productDelete",
+  async (id, { rejectWithValue }) => {
+    console.log(id);
+    try {
+      await api.delete(`/products/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 // export const fetchParticipants = createAsyncThunk(
 //   "event/participants",
 //   async ({ id }, { rejectWithValue }) => {

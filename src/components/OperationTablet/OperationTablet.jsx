@@ -1,12 +1,8 @@
-import { Box, TableContainer, TableTitle, Table, ScrollBox } from 'components/DynamicTable/DynamicTable';
+import { Table } from 'components/DynamicTable/DynamicTable';
 import { getBgColorByType, getColorByType } from 'helpers/colorType';
 import React from 'react'
 import styled from 'styled-components';
-
-const OperationTablet = ({ columns, data, title }) => {
-
-
-    const Text = styled.div`
+export const Text = styled.div`
     width: 80px;
      color: ${props => props.color};
      padding: 4px 10px;
@@ -17,11 +13,35 @@ const OperationTablet = ({ columns, data, title }) => {
             text-decoration: line-through;
         `}
     `;
+export const Title = styled.h3`
+ font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+ display: block;
+
+   border-radius: 8px 8px 0 0;
+ position: sticky;
+  top: 0;
+  padding: 14px;
+  width: 100%;
+  background: #E7F1ED;`;
+const Container = styled.div`
+
+ border-radius: 0 0 8px 8px;
+ border: 1px solid rgba(29, 30, 33, 0.10);
+  background: #FFF;
+
+
+ 
+`;
+const OperationTablet = ({ columns, data, title }) => {
+
+
 
     return (
-        <ScrollBox>
-            <Box><TableTitle>{title}</TableTitle></Box>
-            <TableContainer>
+        <>
+            <Title>{title}</Title>
+            <Container>
                 <Table>
                     <thead>
                         <tr>
@@ -40,7 +60,7 @@ const OperationTablet = ({ columns, data, title }) => {
                         ))}
                     </tbody>
                 </Table>
-            </TableContainer ></ScrollBox >
+            </Container ></>
     );
 };
 
