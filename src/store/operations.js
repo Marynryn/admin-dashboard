@@ -66,6 +66,17 @@ export const getOrders = createAsyncThunk(
     }
   }
 );
+export const getSuppliers = createAsyncThunk(
+  "orders/getSuppliers",
+  async ({ query = "" }, thunkAPI) => {
+    try {
+      const { data } = await api.get(`/suppliers?name=${query}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const getProducts = createAsyncThunk(
   "orders/getProducts",
   async ({ query = "" }, thunkAPI) => {
@@ -87,6 +98,30 @@ export const productDelete = createAsyncThunk(
       return id;
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const addProduct = createAsyncThunk(
+  "addProduct",
+  async (productData, thunkAPI) => {
+    try {
+      const { data } = await api.post("/products/", productData);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const editProduct = createAsyncThunk(
+  "editProduct",
+  async ({ dataWithoutId, _id }, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/products/${_id}`, dataWithoutId);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

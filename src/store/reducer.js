@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addProduct,
+  editProduct,
   getDashboard,
   getOrders,
   getProducts,
+  getSuppliers,
   logOut,
   login,
   productDelete,
 } from "./operations";
+import toast from "react-hot-toast";
 
 const initialState = {
   user: {
@@ -21,17 +25,11 @@ const initialState = {
   suppliers: [],
   customers: [],
   products: [],
-  modalIsOpen: false,
 };
 const mySlice = createSlice({
   name: "adminDashboard",
   initialState,
-  reducers: {
-    setModal: (state, action) => {
-      console.log(action);
-      state.modalIsOpen = action.payload;
-    },
-  },
+
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state, action) => {
@@ -110,6 +108,49 @@ const mySlice = createSlice({
       .addCase(productDelete.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(addProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        state.products.push(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(addProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(editProduct.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(editProduct.fulfilled, (state, action) => {
+        const updatedProduct = action.payload;
+        const index = state.products.findIndex(
+          (p) => p._id === updatedProduct._id
+        );
+        if (index !== -1) {
+          state.products[index] = updatedProduct;
+        }
+      })
+      .addCase(editProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(getSuppliers.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getSuppliers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.suppliers = action.payload;
+      })
+      .addCase(getSuppliers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
     // .addCase(eventRegistration.pending, (state, action) => {
     //   state.isLoading = true;
@@ -138,4 +179,3 @@ const mySlice = createSlice({
 });
 
 export const adminDashboardReducer = mySlice.reducer;
-export const { setModal } = mySlice.actions;

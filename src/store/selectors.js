@@ -4,7 +4,8 @@ export const selectGetDashboard = (state) => state.adminDashboard.dashboard;
 export const selectIsLoading = (state) => state.adminDashboard.isLoading;
 export const selectGetOrders = (state) => state.adminDashboard.orders;
 export const selectGetProducts = (state) => state.adminDashboard.products;
-export const selectGetModalIsOpen = (state) => state.adminDashboard.modalIsOpen;
+
+export const selectGetSuppliers = (state) => state.adminDashboard.suppliers;
 // export const selectError = (state) => state.events.error;
 // export const selectGetParticipantsFilter = (state) =>
 //   state.events.participantsFilter;

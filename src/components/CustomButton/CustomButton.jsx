@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 
 const StyledButton = styled('button')`
-  background-color: ${({ cancel }) => (cancel ? 'rgba(29, 30, 33, 0.1)' : 'var(--green)')};
+  background-color: ${({ $cancel }) => ($cancel ? 'rgba(29, 30, 33, 0.1)' : 'var(--green)')};
   border-radius: 60px;
   border: none;
   font-size: 12px;
@@ -35,7 +35,7 @@ color: ${({ cancel }) => (cancel ? 'var(--green)' : '#fff')};
 `;
 
 const CustomButton = ({ cancel, ...props }) => {
-  return <StyledButton cancel={cancel} {...props} />;
+  return <StyledButton $cancel={cancel} {...props} />;
 };
 
 

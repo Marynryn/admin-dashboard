@@ -20,9 +20,9 @@ position: relative;
   background-color: white;
   padding:  40px 20px;
   border-radius: 8px;
-  min-width: 300px;
+ 
   width: 335px;
-  max-width: 80%;
+  width: 295px;
      @media(min-width: 768px) {
    width: 536px;
 }
@@ -46,7 +46,7 @@ const CloseButton = styled.button`
 `;
 
 const ModalContent = styled.div`
-  margin-top: 20px;
+  
 `;
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -75,12 +75,12 @@ const Modal = ({ isOpen, onClose, children }) => {
     return isOpen ? ReactDOM.createPortal(
         <ModalBackground onClick={handleBackdropClick}>
             <ModalContainer>
-                <ModalHeader>
 
-                    <CloseButton onClick={handleCloseModal}> <svg width={24} height={24} style={{ stroke: "var(--main-black)", strokeWidth: 1 }}>
-                        <use href={`${sprite}#icon-x`}></use>
-                    </svg></CloseButton>
-                </ModalHeader>
+
+                <CloseButton onClick={handleCloseModal}> <svg width={24} height={24} style={{ stroke: "var(--main-black)", strokeWidth: 1 }}>
+                    <use href={`${sprite}#icon-x`}></use>
+                </svg></CloseButton>
+
                 <ModalContent>
                     {children}
                 </ModalContent>

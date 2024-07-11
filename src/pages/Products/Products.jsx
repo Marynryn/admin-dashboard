@@ -1,7 +1,7 @@
 
 import CustomButton from 'components/CustomButton/CustomButton';
 import InputField from 'components/InputField/InputField';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from 'store/operations';
 import { selectGetProducts } from 'store/selectors';
@@ -10,6 +10,9 @@ import sprite from '../../img/svg/symbol-defs.svg'
 
 import { FormProvider, useForm } from 'react-hook-form';
 import AllProducts from 'components/AllProducts/Allproducts';
+import Modal from 'components/Modal/Modal';
+import EditProductModal from 'components/CreateProductModal/CreateProductModal';
+import CreateProductModal from 'components/CreateProductModal/CreateProductModal';
 
 const Container = styled.div`
     padding-top: 40px;
@@ -33,9 +36,9 @@ font-weight: 500;
      
 `;
 const ButtonBox = styled.div`
- width: 42px;
- height: 42px;
-     
+ width: 44px;
+ height: 44px;
+   
 `;
 const StyledSvg = styled.svg`
  
@@ -43,6 +46,7 @@ const StyledSvg = styled.svg`
 `;
 
 const Products = () => {
+    const [modalOpen, setModalOpen] = useState(false)
     const dispatch = useDispatch();
     const products = useSelector(selectGetProducts);
 
@@ -55,9 +59,12 @@ const Products = () => {
     const onSubmit = (data) => {
         dispatch(getProducts({ query: data.Name || '' }));
     };
-
     if (products.length === 0) return null;
-    console.log(products)
+
+    const openModal = () => {
+        setModalOpen(true);
+
+    }
     return (
         <Container>
 
@@ -71,7 +78,7 @@ const Products = () => {
             </FormProvider>
             <Box>
                 <ButtonBox>
-                    <CustomButton type="submit">
+                    <CustomButton type="submit" onClick={openModal}>
                         <StyledSvg width={16} height={16} style={{ stroke: "var(--white)", strokeWidth: 1 }}>
                             <use href={`${sprite}#icon-plus`}></use>
                         </StyledSvg>
@@ -80,7 +87,13 @@ const Products = () => {
                 </ButtonBox>
                 <Text>Add a new product</Text></Box>
             <AllProducts props={products} />
+            <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+                <CreateProductModal onClose={() => setModalOpen(false)} />
+
+
+            </Modal>
         </Container>
+
     );
 };
 

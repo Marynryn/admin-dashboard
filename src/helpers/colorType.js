@@ -26,7 +26,11 @@ export const getColorByStatus = (status) => {
   switch (status) {
     case "Completed":
       return "var(--green)";
+    case "Active":
+      return "var(--green)";
     case "Cancelled":
+      return "var(--red)";
+    case "Deactive":
       return "var(--red)";
     case "Confirmed":
       return " #8059E4";
@@ -46,7 +50,11 @@ export const getBgColorByStatus = (status) => {
   switch (status) {
     case "Completed":
       return "rgba(89, 177, 122, 0.10)";
+    case "Active":
+      return "rgba(89, 177, 122, 0.10)";
     case "Cancelled":
+      return "rgba(232, 80, 80, 0.10)";
+    case "Deactive":
       return "rgba(232, 80, 80, 0.10)";
     case "Confirmed":
       return "rgba(128, 89, 228, 0.10)";

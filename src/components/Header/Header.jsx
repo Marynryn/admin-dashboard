@@ -112,7 +112,7 @@ const Header = () => {
             <ContainerLogo>
                 <Logo />
                 <div>
-                    <Title />
+                    <Title>Medicine store</Title>
                     <ContainerTitle>
                         <SubTitle>{routeLabel}</SubTitle>
                         <Line />

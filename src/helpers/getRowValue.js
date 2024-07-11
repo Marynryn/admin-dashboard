@@ -37,9 +37,15 @@ export const getRowValue = (row, column) => {
       return row.products;
     case "Order date":
       return row.order_date;
+    case "Delivery date":
+      return row.date;
     case "Price":
       return row.price;
+    case "Company":
+      return row.suppliers;
     case "Product Info":
+      return row.name;
+    case "Suppliers Info":
       return row.name;
     case "Status":
       return (
@@ -51,7 +57,7 @@ export const getRowValue = (row, column) => {
         </Text>
       );
     case "Action":
-      return <ActionButtons props={row._id} />;
+      return <ActionButtons props={row} />;
     default:
       return row[column.toLowerCase()];
   }

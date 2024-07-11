@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 
 import styled from 'styled-components';
 const StyledInput = styled.input`
+
 outline: none;
 margin-bottom: 14px;
 border-radius: 60px;
@@ -16,16 +17,36 @@ font-size: 12px;
 font-style: normal;
 font-weight: 400;
     `;
-const InputField = ({ name, type, placeholder }) => {
-    const methods = useFormContext();
+const ErrorMessage = styled.div`
+position: absolute;
+  height: 8px;
+  color: var(--red);
+  font-size: 10px;
+  margin: 2px 0 4px auto;
+  text-align: right;
+  right: 10px;
+  top: 5px;
+`;
 
+const InputField = ({ name, type, placeholder }) => {
+    const { register, formState: { errors } } = useFormContext();
+
+    if (errors[name]) {
+        if (/must be a `number` type/i.test(errors[name].message)) {
+            errors[name].message = `${name.charAt(0).toUpperCase() + name.slice(1)} must be a number`;
+        }
+    }
 
     return (
-        <div>
+        <div style={{ position: "relative" }}>
             <label htmlFor={name}></label>
-
-            <StyledInput type={type} placeholder={placeholder} {...methods.register(name)} />
-
+            {errors[name] && <ErrorMessage>{errors[name].message}</ErrorMessage>}
+            <StyledInput
+                id={name}
+                type={type}
+                placeholder={placeholder}
+                {...register(name)}
+            />
         </div>
     );
 };

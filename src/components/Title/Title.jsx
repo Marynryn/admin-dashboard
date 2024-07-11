@@ -9,9 +9,9 @@ margin-bottom: 4px;
     font-size: 24px;
 }
  `
-const Title = () => {
+const Title = ({ children }) => {
     return (
-        <StyledTitle>Medicine store</StyledTitle>
+        <StyledTitle>{children}</StyledTitle>
     )
 }
 export default Title;
