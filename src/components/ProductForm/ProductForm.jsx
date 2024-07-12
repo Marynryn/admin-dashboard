@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
-
-import { addProduct, editProduct, updateProduct } from 'store/operations'; // Импортируем действие для обновления продукта
+import { addProduct, editProduct } from 'store/operations';
 import InputField from 'components/InputField/InputField';
 import SelectField from 'components/SelectField/SelectField';
 import CustomButton from 'components/CustomButton/CustomButton';

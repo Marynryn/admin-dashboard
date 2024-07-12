@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import Suppliers from "./../pages/Suppliers/Suppliers";
 
 export const authSchema = yup.object({
   email: yup

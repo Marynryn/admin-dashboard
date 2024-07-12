@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import CustomButton from 'components/CustomButton/CustomButton';
-import InputField from 'components/InputField/InputField';
 import FilterBox from 'components/FilterBox/FilterBox';
 import AllCustomers from 'components/AllCustomers/AllCustomers';
 import { getCustomers } from 'store/operations';

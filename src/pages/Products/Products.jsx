@@ -1,17 +1,14 @@
 
 import CustomButton from 'components/CustomButton/CustomButton';
-import InputField from 'components/InputField/InputField';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from 'store/operations';
 import { selectGetProducts } from 'store/selectors';
 import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg'
-
 import { FormProvider, useForm } from 'react-hook-form';
 import AllProducts from 'components/AllProducts/Allproducts';
 import Modal from 'components/Modal/Modal';
-import EditProductModal from 'components/CreateProductModal/CreateProductModal';
 import CreateProductModal from 'components/CreateProductModal/CreateProductModal';
 import toast from 'react-hot-toast';
 import FilterBox from 'components/FilterBox/FilterBox';

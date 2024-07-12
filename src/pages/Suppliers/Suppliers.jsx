@@ -17,10 +17,6 @@ const Container = styled.div`
       width: 100%;
 `;
 
-const Box = styled.div`
-   
-`;
-
 
 const ButtonBox = styled.div`
  width: 177px;

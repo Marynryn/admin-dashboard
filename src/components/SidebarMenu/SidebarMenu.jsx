@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg';
@@ -42,7 +42,7 @@ const SidebarSvg = styled.svg`
 `;
 
 const SidebarMenu = ({ isOpen, onClose }) => {
-  // Состояние для открытия/закрытия сайдбара
+  
   const location = useLocation();
 
   const links = [

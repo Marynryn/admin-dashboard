@@ -1,11 +1,9 @@
-import CustomButton from 'components/CustomButton/CustomButton';
-import InputField from 'components/InputField/InputField';
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from 'store/operations';
 import { selectGetOrders } from 'store/selectors';
 import styled from 'styled-components';
-import sprite from '../../img/svg/symbol-defs.svg'
 import AllOrders from 'components/AllOrders/AllOrders';
 import { FormProvider, useForm } from 'react-hook-form';
 import FilterBox from 'components/FilterBox/FilterBox';
@@ -15,25 +13,7 @@ const Container = styled.div`
     padding-top: 40px;
       width: 100%;
 `;
-const Box = styled.div`
-   display: grid;
-   grid-template-columns: 2fr 1fr;
-   gap: 8px;
-  
-     
-`;
-const InputBox = styled.div`
- 
-     
-`;
-const ButtonBox = styled.div`
- width: 100%;
-     
-`;
-const StyledSvg = styled.svg`
- 
-     
-`;
+
 
 const Orders = () => {
     const dispatch = useDispatch();

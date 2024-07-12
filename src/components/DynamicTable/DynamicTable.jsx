@@ -25,7 +25,7 @@ export const TableTitle = styled.h3`
 `;
 
 export const Table = styled.table`
-  min-width: 300px; 
+  min-width: 280px; 
   width:100%;
   border-collapse: collapse;
  
@@ -38,7 +38,7 @@ export const Table = styled.table`
     line-height: 14px;
     border-top: none; 
     border-left: none;
-    min-width: 100px; 
+    min-width: 80px; 
     @media (min-width: 768px) {
     padding: 20px;
     font-size: 16px;

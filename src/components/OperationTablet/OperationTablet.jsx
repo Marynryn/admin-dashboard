@@ -42,9 +42,10 @@ const OperationTablet = ({ columns, data, title }) => {
 
     return (
         <>
-            <Title>{title}</Title>
-            <Container>
-                <Table>
+
+
+            <Table><Title>{title}</Title>
+                <Container>
                     <thead>
                         <tr>
                             {columns.map((column, index) => (
@@ -61,8 +62,9 @@ const OperationTablet = ({ columns, data, title }) => {
                             </tr>
                         ))}
                     </tbody>
-                </Table>
-            </Container ></>
+                </Container >
+            </Table>
+        </>
     );
 };
 
