@@ -22,6 +22,8 @@ justify-content: center;
 align-items: center;
 color: rgba(89, 177, 122, 0.50);
 border: 1px solid rgba(89, 177, 122, 0.50);
+&:hover{
+    scale: 1.08;}
 `;
 const Button = styled.div`
 width: 82px;
@@ -36,6 +38,8 @@ justify-content: center;
 align-items: center;
 color: rgba(89, 177, 122, 0.50);
 border: 1px solid rgba(89, 177, 122, 0.50);
+&:hover{
+    scale: 1.08;}
 `;
 const ButtonDelete = styled.div`
 width: 32px;
@@ -45,6 +49,8 @@ justify-content: center;
 align-items: center;
 border-radius: 100%;
 border: 1px solid rgba(232, 80, 80, 0.50);
+&:hover{
+    scale: 1.08;}
 `;
 const StyledSvg = styled.svg`
 

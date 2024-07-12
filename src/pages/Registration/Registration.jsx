@@ -6,11 +6,17 @@ import styled from "styled-components";
 const Container = styled.div`
     padding: 24px 20px;
     background-color: var(--background-2);
+     @media(min-width:375px){
+width: 375px;
+margin: 0 auto;
+     }
        @media(min-width: 768px) {
  padding: 24px 32px;
+ width: 768px;
 }
        @media(min-width: 1440px) {
  padding: 28px 100px;
+  width: 1440px;
 }
 `;
 const ContainerLogo = styled.div`

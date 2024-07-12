@@ -14,6 +14,9 @@ display: flex;
   align-items: center;
 background-color: var(--green);
 border: none;
+&:hover{
+    background-color: rgba(63, 148, 95, 1);
+}
     @media(min-width: 768px) {
   width: 44px;
   height: 44px;}

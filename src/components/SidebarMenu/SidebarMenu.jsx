@@ -14,6 +14,9 @@ const NavButton = styled.button`
   height: 38px;
   background-color: var(--white);
   filter: drop-shadow(0px -1px 7px rgba(71, 71, 71, 0.05));
+  &:hover{
+    scale: 1.1;
+  }
   @media(min-width: 768px) {
     width: 44px;
     height: 44px;
@@ -42,7 +45,7 @@ const SidebarSvg = styled.svg`
 `;
 
 const SidebarMenu = ({ isOpen, onClose }) => {
-  
+
   const location = useLocation();
 
   const links = [

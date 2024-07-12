@@ -38,17 +38,18 @@ export const Layout = () => {
     return (
         <Container  >
 
-            <Suspense fallback={<Loader />}>
-                <Header />
 
-                <div style={{ display: "flex", }}>
+            <Header />
 
-                    <Sidebar />
+            <div style={{ display: "flex", }}>
+
+                <Sidebar />
+                <Suspense fallback={<Loader />}>
                     <Outlet />
+                </Suspense>
+            </div>
 
-                </div>
-            </Suspense>
             <Toaster position="top-right" reverseOrder={false} />
-        </Container>
+        </Container >
     );
 };
