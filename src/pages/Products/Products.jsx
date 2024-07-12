@@ -16,6 +16,10 @@ import FilterBox from 'components/FilterBox/FilterBox';
 const Container = styled.div`
     padding-top: 40px;
       width: 100%;
+        @media(min-width: 1440px) {
+  padding-top: 75px;
+      
+ padding-left: 40px }
 `;
 const Box = styled.div`
    display: flex;

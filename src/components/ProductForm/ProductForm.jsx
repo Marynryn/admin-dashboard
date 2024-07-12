@@ -69,7 +69,7 @@ const ProductForm = ({ onClose, product }) => {
 
         if (product) {
             const { _id, id, ...dataWithoutId } = productData;
-            console.log(dataWithoutId)
+
             dispatch(editProduct({ dataWithoutId, _id }));
 
         } else {

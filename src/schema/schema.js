@@ -16,16 +16,9 @@ export const authSchema = yup.object({
 export const productAddSchema = yup.object().shape({
   name: yup.string().required("Product Info is required"),
   category: yup.string().required("Category is required"),
-  stock: yup
-    .string()
-
-    .required("Stock is required"),
-
+  stock: yup.string().required("Stock is required"),
   suppliers: yup.string().required("Suppliers is required"),
-  price: yup
-    .string()
-
-    .required("Price is required"),
+  price: yup.string().required("Price is required"),
 });
 export const productEditSchema = yup.object().shape({
   name: yup.string(),

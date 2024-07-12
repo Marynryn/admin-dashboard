@@ -23,14 +23,14 @@ width: 768px;
 
 
     }
-    @media(min-width: 768px) {
- padding: 15px 32px 40px 32px;
+
+        @media(min-width: 1440px) {
+ padding: 15px 40px 40px 18px;
 width: 1440px;
 
 
     }
 `;
-
 
 export const Layout = () => {
 
@@ -40,11 +40,12 @@ export const Layout = () => {
 
             <Suspense fallback={<Loader />}>
                 <Header />
+
                 <div style={{ display: "flex", }}>
+
                     <Sidebar />
-
-
                     <Outlet />
+
                 </div>
             </Suspense>
             <Toaster position="top-right" reverseOrder={false} />

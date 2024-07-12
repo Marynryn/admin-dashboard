@@ -92,7 +92,6 @@ export const getProducts = createAsyncThunk(
 export const productDelete = createAsyncThunk(
   "/productDelete",
   async (id, { rejectWithValue }) => {
-    console.log(id);
     try {
       await api.delete(`/products/${id}`);
       return id;

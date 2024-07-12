@@ -15,6 +15,10 @@ import { ButtonsContainer } from 'pages/Products/Products';
 const Container = styled.div`
     padding-top: 40px;
       width: 100%;
+        @media(min-width: 1440px) {
+  padding-top: 75px;
+      
+ padding-left: 40px }
 `;
 
 

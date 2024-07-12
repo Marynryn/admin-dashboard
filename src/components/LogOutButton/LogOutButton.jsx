@@ -3,6 +3,8 @@ import sprite from '../../img/svg/symbol-defs.svg'
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'store/operations';
+
+
 const ButtonLogOut = styled("button")`
 width: 38px;
 height: 38px;

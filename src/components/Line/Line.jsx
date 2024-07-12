@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+
 const StyledLine = styled("div")`
     margin: 0 8px;
      height: 12px;

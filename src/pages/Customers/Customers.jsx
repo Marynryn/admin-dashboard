@@ -11,6 +11,10 @@ import toast from 'react-hot-toast';
 const Container = styled.div`
   padding-top: 40px;
   width: 100%;
+    @media(min-width: 1440px) {
+  padding-top: 75px;
+      
+ padding-left: 40px }
 `;
 
 const Customers = () => {

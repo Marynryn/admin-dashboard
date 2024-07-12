@@ -10,7 +10,17 @@ import styled from 'styled-components';
 const Container = styled.div`
     padding-top: 20px;
     width: 100%;
-     
+      @media(min-width: 1440px) {
+ padding-left: 40px } 
+`;
+const Box = styled.div`
+        @media(min-width: 1440px) {
+display: flex;
+gap: 20px;
+
+
+    }
+  
 `;
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -23,8 +33,9 @@ const Dashboard = () => {
     return (
         <Container>
             <Statistics props={dashboard} />
-            <RecentCustomers props={dashboard.recentCustomers} />
-            <Operations props={dashboard.operations} />
+            <Box>
+                <RecentCustomers props={dashboard.recentCustomers} />
+                <Operations props={dashboard.operations} /></Box>
         </Container>
     )
 }

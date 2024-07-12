@@ -74,8 +74,6 @@ const Modal = ({ isOpen, onClose, children }) => {
     return isOpen ? ReactDOM.createPortal(
         <ModalBackground onClick={handleBackdropClick}>
             <ModalContainer>
-
-
                 <CloseButton onClick={handleCloseModal}> <svg width={24} height={24} style={{ stroke: "var(--main-black)", strokeWidth: 1 }}>
                     <use href={`${sprite}#icon-x`}></use>
                 </svg></CloseButton>

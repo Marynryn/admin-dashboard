@@ -14,6 +14,12 @@ const ButtonContainer = styled.div`
 width: 100%;
 margin-top: 40px;
 `;
+const Box = styled.div`
+display: flex;
+flex-direction: column;
+gap: 14px;
+
+`;
 const Form = styled.form`
     width: 100%;
      @media(min-width: 768px) {
@@ -56,7 +62,7 @@ const RegistrationForm = () => {
             <Form onSubmit={handleSubmit(onSubmit)} >
 
 
-                <div >
+                <Box >
 
                     <InputField type="email" name="email" label="Email" placeholder="Email address" />
                     <div style={{ position: "relative" }}>
@@ -72,7 +78,7 @@ const RegistrationForm = () => {
                                 </svg>
                             )}</ButtonEye>
                     </div>
-                </div>
+                </Box>
 
                 <ButtonContainer ><CustomButton type="submit" >Login</CustomButton></ButtonContainer>
 

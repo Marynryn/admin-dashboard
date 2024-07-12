@@ -7,7 +7,8 @@ import styled from 'styled-components';
 export const Text = styled.div`
   
      color: ${props => props.color};
-     padding: 4px 10px;
+     padding: 4px;
+     max-width: 80px;
     background-color:  ${props => props.bgcolor};
     border-radius: 40px;
     text-align: center;
@@ -33,12 +34,9 @@ const Container = styled.div`
  border: 1px solid rgba(29, 30, 33, 0.10);
   background: #FFF;
 
-
- 
 `;
+
 const OperationTablet = ({ columns, data, title }) => {
-
-
 
     return (
         <>

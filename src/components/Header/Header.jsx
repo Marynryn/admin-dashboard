@@ -9,8 +9,6 @@ import { useLocation } from 'react-router-dom';
 import { selectUser } from 'store/selectors';
 import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg'
-
-
 import MobileMenu from 'components/MobileMenu/MobileMenu';
 import LogOutButton from 'components/LogOutButton/LogOutButton';
 import SidebarMenu from 'components/SidebarMenu/SidebarMenu';
@@ -25,7 +23,9 @@ const ContainerLogo = styled("div")`
         @media(min-width: 768px) {
   gap: 32px;
 }
-
+        @media(min-width: 1440px) {
+  gap: 62px;
+}
     
   `;
 const Container = styled("div")`

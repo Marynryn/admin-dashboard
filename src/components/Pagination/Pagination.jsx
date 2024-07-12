@@ -10,34 +10,34 @@ const PageButton = styled.button`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: ${({ active }) => (active ? '#59b17a' : '#ccc')};
+  background-color: ${({ $active }) => ($active ? '#59b17a' : '#ccc')};
   border: none;
   margin: 0 5px;
   cursor: pointer;
   outline: none;
 
   &:hover {
-    background-color: ${({ active }) => (active ? '#59b17a' : '#aaa')};
+    background-color: ${({ $active }) => ($active ? '#59b17a' : '#aaa')};
   }
 `;
 const Pagination = ({ totalPages, currentPage, handlePageClick }) => {
-    if (totalPages <= 1) {
+  if (totalPages <= 1) {
 
-        return null;
-    }
+    return null;
+  }
 
 
-    return (
-        <PaginationBox className="pagination">
-            {[...Array(totalPages)].map((_, index) => (
-                <PageButton
-                    key={index}
-                    active={index + 1 === currentPage}
-                    onClick={() => handlePageClick(index + 1)}
-                />
-            ))}
-        </PaginationBox>
-    );
+  return (
+    <PaginationBox className="pagination">
+      {[...Array(totalPages)].map((_, index) => (
+        <PageButton
+          key={index}
+          $active={index + 1 === currentPage}
+          onClick={() => handlePageClick(index + 1)}
+        />
+      ))}
+    </PaginationBox>
+  );
 };
 
 export default Pagination;

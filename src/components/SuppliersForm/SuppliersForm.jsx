@@ -47,11 +47,11 @@ const SuppliersForm = ({ onClose, supplier }) => {
 
         if (supplier) {
             const { _id, id, ...dataWithoutId } = productData;
-            console.log(dataWithoutId)
+
             dispatch(editSuppliers({ dataWithoutId, _id }));
 
         } else {
-            console.log(productData)
+
             dispatch(addSuppliers(productData));
         }
         onClose(false);
