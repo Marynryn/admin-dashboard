@@ -8,10 +8,22 @@ import styled from 'styled-components';
 
 
 const Container = styled('div')`
+   padding: 17px 15px 20px;
+
+        @media(min-width: 375px) {
+width: 375px;
+margin: 0 auto;
    padding: 17px 20px 20px;
-  overflow-y: auto;
-  height: 100%;
-   box-sizing: border-box;
+ 
+
+   box-sizing: border-box;}
+    @media(min-width: 768px) {
+ padding: 15px 32px 40px;
+width: 768px;
+
+
+    }
+
 `;
 
 
@@ -28,7 +40,6 @@ export const Layout = () => {
 
 
                     <Outlet />
-
                 </div>
             </Suspense>
             <Toaster position="top-right" reverseOrder={false} />

@@ -18,10 +18,14 @@ import SidebarMenu from 'components/SidebarMenu/SidebarMenu';
 const ContainerLogo = styled("div")`
     display: flex;
     justify-content: center;
-    gap: 20px;
-    @media(min-width: 768px) {
+    gap: 10px;
+        @media(min-width: 375px) {
+  gap: 20px;
+}
+        @media(min-width: 768px) {
   gap: 32px;
 }
+
     
   `;
 const Container = styled("div")`
@@ -29,7 +33,10 @@ position: relative;
     display: flex;
     padding-bottom: 15px;
     justify-content: flex-start;
-gap: 20px;
+gap: 10px;
+        @media(min-width: 375px) {
+  gap: 20px;
+}
     &::after {
         content: '';
         position: absolute;
@@ -127,7 +134,7 @@ const Header = () => {
         </Container>
         <MobileMenu isOpen={modalOpen} onClose={setModalOpen}>
 
-            <SidebarMenu />
+            <SidebarMenu isOpen={modalOpen} onClose={setModalOpen} />
             <div style={{ marginBottom: 0, marginTop: "auto" }}>
                 <LogOutButton />
             </div>

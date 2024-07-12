@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import Suppliers from "./../pages/Suppliers/Suppliers";
 
 export const authSchema = yup.object({
   email: yup
@@ -33,4 +34,42 @@ export const productEditSchema = yup.object().shape({
   stock: yup.string(),
   suppliers: yup.string(),
   price: yup.string(),
+});
+const dateRegEx =
+  /^(January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}$/;
+
+export const supplierAddSchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  address: yup.string().required("Address is required"),
+  suppliers: yup.string().required("Company is required"),
+  date: yup
+    .string()
+    .matches(dateRegEx, "Date must be in the format: August 1, 2023")
+    .required("Date is required"),
+  amount: yup
+    .string()
+
+    .required("Amount is required"),
+  status: yup
+    .string()
+    .oneOf(["Active", "Deactive"], "Status must be either Active or Deactive")
+    .required("Status is required"),
+});
+
+export const supplierEditSchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  address: yup.string().required("Address is required"),
+  suppliers: yup.string().required("Company is required"),
+  date: yup
+    .string()
+    .matches(dateRegEx, "Date must be in the format: August 1, 2023")
+    .required("Date is required"),
+  amount: yup
+    .string()
+
+    .required("Amount is required"),
+  status: yup
+    .string()
+    .oneOf(["Active", "Deactive"], "Status must be either Active or Deactive")
+    .required("Status is required"),
 });

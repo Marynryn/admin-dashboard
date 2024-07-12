@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addProduct,
+  addSuppliers,
   editProduct,
+  editSuppliers,
+  getCustomers,
   getDashboard,
   getOrders,
   getProducts,
@@ -151,30 +154,50 @@ const mySlice = createSlice({
       .addCase(getSuppliers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(addSuppliers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addSuppliers.fulfilled, (state, action) => {
+        state.suppliers.push(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(addSuppliers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(editSuppliers.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(editSuppliers.fulfilled, (state, action) => {
+        const updatedSupplier = action.payload;
+        const index = state.suppliers.findIndex(
+          (p) => p._id === updatedSupplier._id
+        );
+        if (index !== -1) {
+          state.suppliers[index] = updatedSupplier;
+        }
+      })
+      .addCase(editSuppliers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(getCustomers.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getCustomers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.customers = action.payload;
+      })
+      .addCase(getCustomers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
-    // .addCase(eventRegistration.pending, (state, action) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(eventRegistration.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addCase(eventRegistration.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // })
-    // .addCase(fetchParticipants.pending, (state, action) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(fetchParticipants.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   state.participants = action.payload;
-    // })
-    // .addCase(fetchParticipants.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // });
   },
 });
 

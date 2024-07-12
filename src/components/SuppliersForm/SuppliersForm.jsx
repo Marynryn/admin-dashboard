@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
-
-import { addProduct, editProduct, updateProduct } from 'store/operations'; // Импортируем действие для обновления продукта
+import { addSuppliers, editSuppliers, } from 'store/operations';
 import InputField from 'components/InputField/InputField';
 import SelectField from 'components/SelectField/SelectField';
 import CustomButton from 'components/CustomButton/CustomButton';
-import { productAddSchema, productEditSchema } from 'schema/schema.js';
+import { supplierAddSchema, supplierEditSchema } from 'schema/schema.js';
+import DeliveryPicker from 'components/DeliveryPicker/DeliveryPiccker';
+import { Container, RowBox } from 'components/ProductForm/ProductForm';
 
 const FormContainer = styled.form`
   display: flex;
@@ -20,12 +21,16 @@ const Box = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 40px;
+    @media (min-width: 768px){
+    width: 274px;
+  }
 `;
 
 const SuppliersForm = ({ onClose, supplier }) => {
+
     const dispatch = useDispatch();
     const methods = useForm({
-        resolver: yupResolver(supplier ? productEditSchema : productAddSchema),
+        resolver: yupResolver(supplier ? supplierEditSchema : supplierAddSchema),
         defaultValues: supplier || {},
     });
     const { handleSubmit, reset, setValue } = methods;
@@ -38,16 +43,16 @@ const SuppliersForm = ({ onClose, supplier }) => {
         }
     }, [supplier, setValue]);
 
-    const handleAddOrUpdateProduct = (productData) => {
+    const handleAddOrUpdate = (productData) => {
 
         if (supplier) {
             const { _id, id, ...dataWithoutId } = productData;
             console.log(dataWithoutId)
-            dispatch(editProduct({ dataWithoutId, _id }));
+            dispatch(editSuppliers({ dataWithoutId, _id }));
 
         } else {
-
-            dispatch(addProduct(productData));
+            console.log(productData)
+            dispatch(addSuppliers(productData));
         }
         onClose(false);
         reset();
@@ -67,19 +72,26 @@ const SuppliersForm = ({ onClose, supplier }) => {
 
     return (
         <FormProvider {...methods}>
-            <FormContainer onSubmit={handleSubmit(handleAddOrUpdateProduct)}>
-                <InputField name="name" type="text" placeholder="Suppliers Info" />
+            <FormContainer onSubmit={handleSubmit(handleAddOrUpdate)}>
+                <Container>
+                    <RowBox>
+                        <InputField name="name" type="text" placeholder="Suppliers Info" />
 
-                <InputField name="address" type="text" placeholder="Address" />
-                <InputField name="company" type="text" placeholder="Company" />
-                <InputField name="amount" type="text" placeholder="Amount" />
-                <SelectField name="status" options={categoryOptions} />
-                <Box>
-                    <CustomButton type="submit">{supplier ? 'Save' : 'Add'}</CustomButton>
-                    <CustomButton type="button" $cancel="true" onClick={handleCancel}>
-                        Cancel
-                    </CustomButton>
-                </Box>
+                        <InputField name="address" type="text" placeholder="Address" />
+                    </RowBox>
+                    <RowBox>
+                        <InputField name="suppliers" type="text" placeholder="Company" />
+                        <DeliveryPicker name="date" />
+                    </RowBox><RowBox>
+                        <InputField name="amount" type="text" placeholder="Amount" />
+                        <SelectField name="status" options={categoryOptions} />
+                    </RowBox>
+                    <Box>
+                        <CustomButton type="submit">{supplier ? 'Save' : 'Add'}</CustomButton>
+                        <CustomButton type="button" $cancel="true" onClick={handleCancel}>
+                            Cancel
+                        </CustomButton>
+                    </Box></Container>
             </FormContainer>
         </FormProvider>
     );

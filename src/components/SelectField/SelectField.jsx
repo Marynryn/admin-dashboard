@@ -8,7 +8,7 @@ const customStyles = {
         ...provided,
         backgroundColor: '#FFF',
         boxShadow: 'none',
-        marginBottom: "14px",
+        width: '100%',
         borderRadius: "60px",
         fontSize: "12px",
         border: "1px solid rgba(29, 30, 33, 0.10)",
@@ -92,7 +92,7 @@ const SelectField = ({ name, options }) => {
     const { control, formState: { errors } } = useFormContext();
 
     return (
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative", width: "100%" }}>
             <label htmlFor={name}></label>
             {errors[name] && <ErrorMessage>{errors[name].message}</ErrorMessage>}
             <Controller

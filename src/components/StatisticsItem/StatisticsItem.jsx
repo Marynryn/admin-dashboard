@@ -4,19 +4,26 @@ import sprite from '../../img/svg/symbol-defs.svg'
 import SubTitle from 'components/SubTitle/SubTitle';
 import { formatNumber } from 'helpers/formatNumber';
 const Container = styled.div`
-    width: 157px;
+    width: 130px;
 height: 98px;
 padding: 14px;
 border-radius: 8px;
 border: 1px solid rgba(29, 30, 33, 0.10);
 
 background: #FFF;
+ @media(min-width: 375px) { width: 155px;}
+  @media(min-width: 768px) { width: 220px;
+  height: 108px;}
 `;
+
 const Value = styled.h3`
     font-size: 16px;
     font-weight: 600;
  
     margin-top: 32px;
+    @media(min-width: 768px) {
+           font-size: 24px;
+    }
 `
 const StatisticsItem = ({ name, value, icon }) => {
 

@@ -37,6 +37,8 @@ export const getRowValue = (row, column) => {
       return row.products;
     case "Order date":
       return row.order_date;
+    case "Register date":
+      return row.register_date;
     case "Delivery date":
       return row.date;
     case "Price":

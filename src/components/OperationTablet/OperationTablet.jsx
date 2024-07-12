@@ -2,8 +2,10 @@ import { Table } from 'components/DynamicTable/DynamicTable';
 import { getBgColorByType, getColorByType } from 'helpers/colorType';
 import React from 'react'
 import styled from 'styled-components';
+
+
 export const Text = styled.div`
-    width: 80px;
+  
      color: ${props => props.color};
      padding: 4px 10px;
     background-color:  ${props => props.bgcolor};

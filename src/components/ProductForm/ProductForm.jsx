@@ -14,14 +14,42 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 16px;
+   @media (min-width: 768px){
+     margin-top: 36px;}
 `;
 
 const Box = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 40px;
+  @media (min-width: 768px){
+    width: 274px;
+  }
 `;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+   gap: 14px;
 
+`;
+export const EmptyBox = styled.div`
+display: none;
+@media (min-width: 768px){
+    display: block;
+    width: 100%;}
+`;
+export const RowBox = styled.div`
+  display: flex;
+  flex-direction: column;
+ gap: 14px;
+
+ @media (min-width: 768px){
+    flex-direction: row;
+    gap: 8px;
+    
+ }
+
+`;
 const ProductForm = ({ onClose, product }) => {
     const dispatch = useDispatch();
     const methods = useForm({
@@ -60,6 +88,7 @@ const ProductForm = ({ onClose, product }) => {
     const categoryOptions = [
         { value: 'Medicine', label: 'Medicine' },
         { value: 'Head', label: 'Head' },
+        { value: 'Heart', label: 'Heart' },
         { value: 'Hand', label: 'Hand' },
         { value: 'Dental Care', label: 'Dental Care' },
         { value: 'Skin Care', label: 'Skin Care' },
@@ -73,17 +102,23 @@ const ProductForm = ({ onClose, product }) => {
     return (
         <FormProvider {...methods}>
             <FormContainer onSubmit={handleSubmit(handleAddOrUpdateProduct)}>
-                <InputField name="name" type="text" placeholder="Product Info" />
-                <SelectField name="category" options={categoryOptions} />
-                <InputField name="stock" type="number" placeholder="Stock" />
-                <InputField name="suppliers" type="text" placeholder="Suppliers" />
-                <InputField name="price" type="text" placeholder="Price" />
-                <Box>
-                    <CustomButton type="submit">{product ? 'Save' : 'Add'}</CustomButton>
-                    <CustomButton type="button" $cancel="true" onClick={handleCancel}>
-                        Cancel
-                    </CustomButton>
-                </Box>
+                <Container>
+                    <RowBox>
+                        <InputField style={{ width: "50%" }} name="name" type="text" placeholder="Product Info" />
+                        <SelectField name="category" options={categoryOptions} /></RowBox>
+                    <RowBox>
+                        <InputField name="stock" type="number" placeholder="Stock" />
+                        <InputField name="suppliers" type="text" placeholder="Suppliers" /></RowBox>
+                    <RowBox>
+                        <InputField name="price" type="text" placeholder="Price" />
+                        <EmptyBox></EmptyBox>
+                    </RowBox>
+                    <Box>
+                        <CustomButton type="submit">{product ? 'Save' : 'Add'}</CustomButton>
+                        <CustomButton type="button" $cancel="true" onClick={handleCancel}>
+                            Cancel
+                        </CustomButton>
+                    </Box></Container>
             </FormContainer>
         </FormProvider>
     );

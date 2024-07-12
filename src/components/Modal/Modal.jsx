@@ -18,21 +18,20 @@ const ModalBackground = styled.div`
 const ModalContainer = styled.div`
 position: relative;
   background-color: white;
-  padding:  40px 20px;
+  padding:  20px 20px;
   border-radius: 8px;
  
   width: 335px;
   width: 295px;
+    @media(min-width: 375px){
+        padding:  40px 20px; 
+    }
      @media(min-width: 768px) {
    width: 536px;
+     padding:  40px; 
 }
 `;
 
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const CloseButton = styled.button`
   background: none;

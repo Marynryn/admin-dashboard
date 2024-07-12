@@ -1,6 +1,6 @@
 import CustomButton from 'components/CustomButton/CustomButton';
 import InputField from 'components/InputField/InputField';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from 'store/operations';
 import { selectGetOrders } from 'store/selectors';
@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg'
 import AllOrders from 'components/AllOrders/AllOrders';
 import { FormProvider, useForm } from 'react-hook-form';
+import FilterBox from 'components/FilterBox/FilterBox';
+import toast from 'react-hot-toast';
 
 const Container = styled.div`
     padding-top: 40px;
@@ -36,38 +38,38 @@ const StyledSvg = styled.svg`
 const Orders = () => {
     const dispatch = useDispatch();
     const orders = useSelector(selectGetOrders);
-
+    const [noResults, setNoResults] = useState(false);
     const methods = useForm();
 
     useEffect(() => {
         dispatch(getOrders({}));
     }, [dispatch]);
 
-    const onSubmit = (data) => {
-        dispatch(getOrders({ query: data.Name || '' }));
+    const onSubmitFilter = async (data) => {
+        try {
+            const orders = await dispatch(getOrders({ query: data.Name || '' }));
+
+            if (orders.payload.length === 0) {
+                setNoResults(true);
+                toast.error('No results found');
+            } else {
+                setNoResults(false);
+            }
+        } catch (error) {
+            console.error('Error fetching customers:', error);
+            toast.error('Failed to fetch customers');
+        }
     };
 
-    if (orders.length === 0) return null;
 
     return (
         <Container>
 
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}> <Box>
-                    <InputBox>
-                        <InputField placeholder={"User Name"} type={"text"} name={"Name"} />
-                    </InputBox>
-                    <ButtonBox>
-                        <CustomButton type="submit">
-                            <StyledSvg width={14} height={14} style={{ stroke: "var(--main-black)", strokeWidth: 1 }}>
-                                <use href={`${sprite}#icon-filter`}></use>
-                            </StyledSvg>Filter
-                        </CustomButton>
-                    </ButtonBox></Box>
-                </form>
+                <FilterBox onSubmit={onSubmitFilter} />
             </FormProvider>
 
-            <AllOrders props={orders} />
+            {noResults ? null : <AllOrders props={orders} />}
         </Container>
     );
 };

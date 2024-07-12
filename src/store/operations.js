@@ -125,15 +125,38 @@ export const editProduct = createAsyncThunk(
     }
   }
 );
-// export const fetchParticipants = createAsyncThunk(
-//   "event/participants",
-//   async ({ id }, { rejectWithValue }) => {
-//     try {
-//       const participants = await api.get(`/${id}`);
+export const addSuppliers = createAsyncThunk(
+  "addSuppliers",
+  async (productData, thunkAPI) => {
+    try {
+      const { data } = await api.post("/suppliers/", productData);
 
-//       return participants.data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const editSuppliers = createAsyncThunk(
+  "editSuppliers",
+  async ({ dataWithoutId, _id }, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/suppliers/${_id}`, dataWithoutId);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getCustomers = createAsyncThunk(
+  "orders/getCustomers",
+  async ({ query = "" }, thunkAPI) => {
+    try {
+      const { data } = await api.get(`/customers?name=${query}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

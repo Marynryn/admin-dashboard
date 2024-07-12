@@ -7,6 +7,7 @@ import Modal from 'components/Modal/Modal';
 
 import EditProductModal from 'components/EditProductModal/EditProductModal';
 import { useLocation } from 'react-router-dom';
+import EditSuppliersModal from 'components/EditSuppliersModal/EditSuppliersModal';
 
 const Box = styled.div`
 display: flex;
@@ -50,6 +51,7 @@ const StyledSvg = styled.svg`
 `;
 
 const ActionButtons = ({ props }) => {
+
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen2, setModalOpen2] = useState(false);
     const location = useLocation();
@@ -67,7 +69,7 @@ const ActionButtons = ({ props }) => {
         setModalOpen(false);
     };
     const closeModal2 = () => {
-        setModalOpen(false);
+        setModalOpen2(false);
     };
     const isSuppliersPage = location.pathname === "/suppliers"
     return (
@@ -93,7 +95,7 @@ const ActionButtons = ({ props }) => {
                 <EditProductModal onClose={closeModal} props={props} />
             </Modal>
             <Modal isOpen={modalOpen2} onClose={closeModal2}>
-                {/* <EditSuppliersModal onClose={closeModal2} props={props} /> */}
+                <EditSuppliersModal onClose={closeModal2} props={props} />
             </Modal>
         </>
     );

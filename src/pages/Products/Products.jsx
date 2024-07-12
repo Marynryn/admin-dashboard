@@ -13,6 +13,8 @@ import AllProducts from 'components/AllProducts/Allproducts';
 import Modal from 'components/Modal/Modal';
 import EditProductModal from 'components/CreateProductModal/CreateProductModal';
 import CreateProductModal from 'components/CreateProductModal/CreateProductModal';
+import toast from 'react-hot-toast';
+import FilterBox from 'components/FilterBox/FilterBox';
 
 const Container = styled.div`
     padding-top: 40px;
@@ -23,11 +25,15 @@ const Box = styled.div`
   align-items: center;
    gap: 8px;
   margin-bottom: 20px;
-     
+  @media (min-width: 768px){
+       margin-bottom: 0;}
 `;
-const InputBox = styled.div`
- width: 100%;
-     
+export const ButtonsContainer = styled.div`
+@media (min-width: 768px){
+ display: flex;
+justify-content: space-between
+}
+
 `;
 const Text = styled.p`
  margin:0;
@@ -49,17 +55,28 @@ const Products = () => {
     const [modalOpen, setModalOpen] = useState(false)
     const dispatch = useDispatch();
     const products = useSelector(selectGetProducts);
-
+    const [noResults, setNoResults] = useState(false);
     const methods = useForm();
 
     useEffect(() => {
         dispatch(getProducts({}));
     }, [dispatch]);
 
-    const onSubmit = (data) => {
-        dispatch(getProducts({ query: data.Name || '' }));
+    const onSubmitFilter = async (data) => {
+        try {
+            const products = await dispatch(getProducts({ query: data.Name || '' }));
+
+            if (products.payload.length === 0) {
+                toast.error('No results found');
+                setNoResults(true);
+            } else {
+                setNoResults(false);
+            }
+        } catch (error) {
+            console.error('Error fetching :', error);
+            toast.error('Failed to fetch ');
+        }
     };
-    if (products.length === 0) return null;
 
     const openModal = () => {
         setModalOpen(true);
@@ -67,26 +84,21 @@ const Products = () => {
     }
     return (
         <Container>
+            <ButtonsContainer>
+                <FormProvider {...methods}>
+                    <FilterBox onSubmit={onSubmitFilter} />
+                </FormProvider>
+                <Box>
+                    <ButtonBox>
+                        <CustomButton type="submit" onClick={openModal}>
+                            <StyledSvg width={16} height={16} style={{ stroke: "var(--white)", strokeWidth: 1 }}>
+                                <use href={`${sprite}#icon-plus`}></use>
+                            </StyledSvg>
+                        </CustomButton>
 
-            <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <InputBox>
-                        <InputField placeholder={"Product Name"} type={"text"} name={"Name"} />
-                    </InputBox>
-
-                </form>
-            </FormProvider>
-            <Box>
-                <ButtonBox>
-                    <CustomButton type="submit" onClick={openModal}>
-                        <StyledSvg width={16} height={16} style={{ stroke: "var(--white)", strokeWidth: 1 }}>
-                            <use href={`${sprite}#icon-plus`}></use>
-                        </StyledSvg>
-                    </CustomButton>
-
-                </ButtonBox>
-                <Text>Add a new product</Text></Box>
-            <AllProducts props={products} />
+                    </ButtonBox>
+                    <Text>Add a new product</Text></Box></ButtonsContainer>
+            {noResults ? null : <AllProducts props={products} />}
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
                 <CreateProductModal onClose={() => setModalOpen(false)} />
 

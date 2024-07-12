@@ -19,6 +19,9 @@ export const TableTitle = styled.h3`
   padding: 14px;
   width: 100%;
   background: #E7F1ED;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const Table = styled.table`
@@ -36,6 +39,11 @@ export const Table = styled.table`
     border-top: none; 
     border-left: none;
     min-width: 100px; 
+    @media (min-width: 768px) {
+    padding: 20px;
+    font-size: 16px;
+     min-width: 150px; 
+  }
   }
 
   tr:last-child td{
@@ -51,7 +59,7 @@ export const Table = styled.table`
 
   th:last-child {
    border-right: none;
-    padding-right: 0;
+ 
   }
 
   th:first-child {
@@ -60,7 +68,7 @@ export const Table = styled.table`
 
   td:last-child {
      border-right: none;
-    padding-right: 0;
+  
   }
 
   td:first-child {
@@ -69,11 +77,11 @@ border-radius: 0 0 8px 8px;
 `;
 
 export const Box = styled.div`
-  width: 100%;
+height: 100%;
  padding-bottom:20px;
- overflow-x: auto; 
 
-  &::-webkit-scrollbar {
+overflow-x: auto;
+ &::-webkit-scrollbar {
     padding-bottom: 15px;
     height: 8px;
   }
@@ -91,6 +99,7 @@ background: #E6E6E6;
     background: #555; 
   }
 
+ 
 `;
 
 export const BoxName = styled.div`
@@ -98,6 +107,10 @@ export const BoxName = styled.div`
   flex-direction: column;
   align-items: left;
   gap: 8px;
+     @media (min-width: 768px) {
+   flex-direction: row;
+   align-items: center;
+  }
 `;
 
 export const Name = styled.h4`
@@ -109,15 +122,16 @@ export const Container = styled.div`
  border-radius: 0 0 8px 8px;
  border: 1px solid rgba(29, 30, 33, 0.10);
   background: #FFF;
-
-overflow-x: auto;
-  &::-webkit-scrollbar{
-    
+overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
   }
+
+
 `;
 
 const DynamicTable = ({ columns, data, title }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -132,10 +146,12 @@ const DynamicTable = ({ columns, data, title }) => {
 
   return (
     <Box>
-      <TableTitle>{title}</TableTitle>
 
-      <Container>
-        <Table>
+
+
+      <Table>
+        <TableTitle>{title}</TableTitle>
+        <Container>
           <thead>
             <tr>
               {columns.map((column, index) => (
@@ -153,13 +169,13 @@ const DynamicTable = ({ columns, data, title }) => {
                 ))}
               </tr>
             ))}
-          </tbody>
-        </Table>
+          </tbody></Container>
+      </Table>
 
 
 
 
-      </Container>
+
       <Pagination totalPages={totalPages} handlePageClick={handlePageClick} currentPage={currentPage} />
 
     </Box>

@@ -39,7 +39,7 @@ const RegistrationForm = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(data);
+
         try {
 
             await dispatch(login(data));

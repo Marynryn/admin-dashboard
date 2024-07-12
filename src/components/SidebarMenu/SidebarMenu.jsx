@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import sprite from '../../img/svg/symbol-defs.svg';
@@ -21,7 +21,8 @@ const NavButton = styled.button`
 `;
 
 const SidebarList = styled.ul`
-margin: 0`;
+  margin: 0;
+`;
 
 const SidebarItem = styled.li`
   margin-bottom: 16px;
@@ -40,34 +41,40 @@ const SidebarSvg = styled.svg`
   }
 `;
 
-const SidebarMenu = () => {
-    const links = [
-        { to: '/dashboard', icon: 'icon-dashboard' },
-        { to: '/orders', icon: 'icon-shopping-cart' },
-        { to: '/products', icon: 'icon-Group' },
-        { to: '/customers', icon: 'icon-pharmacy' },
-        { to: '/suppliers', icon: 'icon-users' },
-    ];
+const SidebarMenu = ({ isOpen, onClose }) => {
+  // Состояние для открытия/закрытия сайдбара
+  const location = useLocation();
 
-    const location = useLocation();
+  const links = [
+    { to: '/dashboard', icon: 'icon-dashboard' },
+    { to: '/orders', icon: 'icon-shopping-cart' },
+    { to: '/products', icon: 'icon-Group' },
+    { to: '/customers', icon: 'icon-pharmacy' },
+    { to: '/suppliers', icon: 'icon-users' },
+  ];
 
-    return (
-        <nav >
-            <SidebarList>
-                {links.map((link) => (
-                    <SidebarItem key={link.to}>
-                        <NavLink to={link.to} className={({ isActive }) => (isActive ? 'active' : '')}>
-                            <NavButton>
-                                <SidebarSvg className={location.pathname === link.to ? 'active' : ''}>
-                                    <use href={`${sprite}#${link.icon}`} />
-                                </SidebarSvg>
-                            </NavButton>
-                        </NavLink>
-                    </SidebarItem>
-                ))}
-            </SidebarList>
-        </nav>
-    );
+
+  const toggleSidebar = () => {
+    onClose(false);
+  };
+
+  return (
+    <nav>
+      <SidebarList>
+        {links.map((link) => (
+          <SidebarItem key={link.to}>
+            <NavLink to={link.to} className={({ isActive }) => (isActive ? 'active' : '')} onClick={toggleSidebar}>
+              <NavButton>
+                <SidebarSvg className={location.pathname === link.to ? 'active' : ''}>
+                  <use href={`${sprite}#${link.icon}`} />
+                </SidebarSvg>
+              </NavButton>
+            </NavLink>
+          </SidebarItem>
+        ))}
+      </SidebarList>
+    </nav>
+  );
 };
 
 export default SidebarMenu;

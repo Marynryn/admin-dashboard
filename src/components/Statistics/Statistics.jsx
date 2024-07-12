@@ -15,7 +15,7 @@ const Statistics = ({ props }) => {
 
     return (
         <div>
-            <ul style={{ display: "flex", flexWrap: "wrap", gap: "20px", marginTop: 0 }}>{arr.map((el, index) => <li key={index}> <StatisticsItem {...el} /></li>)}
+            <ul style={{ display: "flex", flexWrap: "wrap", gap: "20px", marginTop: 0, marginBottom: "40px" }}>{arr.map((el, index) => <li key={index}> <StatisticsItem {...el} /></li>)}
 
 
             </ul>
