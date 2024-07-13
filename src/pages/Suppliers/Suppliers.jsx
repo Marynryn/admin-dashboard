@@ -88,7 +88,7 @@ const Suppliers = () => {
                 </ButtonBox></ButtonsContainer>
             {noResults ? null : <AllSuppliers props={suppliers} />}
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-                <CreateSuppliersModal onClose={() => setModalOpen(false)} />
+                <CreateSuppliersModal isNew={true} onClose={() => setModalOpen(false)} />
 
 
             </Modal>

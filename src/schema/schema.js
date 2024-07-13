@@ -16,16 +16,31 @@ export const authSchema = yup.object({
 export const productAddSchema = yup.object().shape({
   name: yup.string().required("Product Info is required"),
   category: yup.string().required("Category is required"),
-  stock: yup.string().required("Stock is required"),
+  stock: yup
+    .number()
+    .required("Stock is required")
+    .positive("Stock must be a positive number"),
   suppliers: yup.string().required("Suppliers is required"),
-  price: yup.string().required("Price is required"),
+  price: yup
+    .number()
+    .required("Price is required")
+    .moreThan(0, "Price must be greater than zero")
+    .test("decimal", "Price must have exactly two decimal places", (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value)
+    ),
 });
+
 export const productEditSchema = yup.object().shape({
   name: yup.string(),
   category: yup.string(),
-  stock: yup.string(),
+  stock: yup.number().positive("Stock must be a positive number"),
   suppliers: yup.string(),
-  price: yup.string(),
+  price: yup
+    .number()
+    .positive("Price must be a positive number")
+    .test("decimal", "Price must have exactly two decimal places", (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value)
+    ),
 });
 const dateRegEx =
   /^(January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}$/;
@@ -39,9 +54,13 @@ export const supplierAddSchema = yup.object().shape({
     .matches(dateRegEx, "Date must be in the format: August 1, 2023")
     .required("Date is required"),
   amount: yup
-    .string()
+    .number()
+    .required("Amount is required")
+    .moreThan(0, "Amount must be greater than zero")
+    .test("decimal", "Amount must have exactly two decimal places", (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value)
+    ),
 
-    .required("Amount is required"),
   status: yup
     .string()
     .oneOf(["Active", "Deactive"], "Status must be either Active or Deactive")
@@ -49,19 +68,20 @@ export const supplierAddSchema = yup.object().shape({
 });
 
 export const supplierEditSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  address: yup.string().required("Address is required"),
-  suppliers: yup.string().required("Company is required"),
+  name: yup.string(),
+  address: yup.string(),
+  suppliers: yup.string(),
   date: yup
     .string()
-    .matches(dateRegEx, "Date must be in the format: August 1, 2023")
-    .required("Date is required"),
-  amount: yup
-    .string()
+    .matches(dateRegEx, "Date must be in the format: August 1, 2023"),
 
-    .required("Amount is required"),
+  amount: yup
+    .number()
+    .moreThan(0, "Amount must be greater than zero")
+    .test("decimal", "Amount must have exactly two decimal places", (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value)
+    ),
   status: yup
     .string()
-    .oneOf(["Active", "Deactive"], "Status must be either Active or Deactive")
-    .required("Status is required"),
+    .oneOf(["Active", "Deactive"], "Status must be either Active or Deactive"),
 });

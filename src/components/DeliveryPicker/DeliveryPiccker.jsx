@@ -42,7 +42,7 @@ const CustomBox = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-position: absolute;
+  position: absolute;
   height: 8px;
   color: var(--red);
   font-size: 10px;
@@ -51,7 +51,8 @@ position: absolute;
   right: 10px;
   top: 5px;
 `;
-const DeliveryPicker = ({ name }) => {
+
+const DeliveryPicker = ({ name, isNew }) => {
     const datePickerRef = useRef(null);
     const { setValue, register, formState: { errors }, watch } = useFormContext();
 
@@ -81,7 +82,7 @@ const DeliveryPicker = ({ name }) => {
                 }
                 locale="en-GB"
                 placeholderText="Delivery date"
-                maxDate={new Date()}
+                minDate={isNew ? new Date() : null}
                 dateFormat="MMMM d, yyyy"
                 ref={datePickerRef}
                 showMonthDropdown

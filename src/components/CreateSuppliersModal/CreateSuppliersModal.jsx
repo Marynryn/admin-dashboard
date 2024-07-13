@@ -4,12 +4,12 @@ import React from 'react';
 
 
 
-const CreateSuppliersModal = ({ onClose }) => {
+const CreateSuppliersModal = ({ onClose, isNew }) => {
 
     return (
         <div>
             <Title>Add a new suppliers</Title>
-            <SuppliersForm onClose={onClose} />
+            <SuppliersForm isNew={isNew} onClose={onClose} />
         </div>
     );
 };

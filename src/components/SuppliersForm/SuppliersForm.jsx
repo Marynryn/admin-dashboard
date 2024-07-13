@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
-import { addSuppliers, editSuppliers, } from 'store/operations';
+import { addSuppliers, editSuppliers } from 'store/operations';
 import InputField from 'components/InputField/InputField';
 import SelectField from 'components/SelectField/SelectField';
 import CustomButton from 'components/CustomButton/CustomButton';
@@ -21,38 +21,40 @@ const Box = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 40px;
-    @media (min-width: 768px){
+  @media (min-width: 768px) {
     width: 274px;
   }
 `;
 
-const SuppliersForm = ({ onClose, supplier }) => {
-
+const SuppliersForm = ({ onClose, supplier, isNew }) => {
     const dispatch = useDispatch();
     const methods = useForm({
         resolver: yupResolver(supplier ? supplierEditSchema : supplierAddSchema),
         defaultValues: supplier || {},
     });
-    const { handleSubmit, reset, setValue } = methods;
+    const { handleSubmit, reset, } = methods;
 
     useEffect(() => {
         if (supplier) {
             for (const [key, value] of Object.entries(supplier)) {
-                setValue(key, value);
+                methods.setValue(key, value);
             }
         }
-    }, [supplier, setValue]);
+    }, [supplier, methods]);
 
-    const handleAddOrUpdate = async (productData) => {
+    const handleAddOrUpdate = async (supplierData) => {
+
+        const dataToSend = {
+            ...supplierData,
+            amount: supplierData.amount.toString(),
+        };
 
         if (supplier) {
-            const { _id, id, ...dataWithoutId } = productData;
+            const { _id, ...dataWithoutId } = dataToSend;
 
-            await dispatch(editSuppliers({ dataWithoutId, _id }));
-
+            await dispatch(editSuppliers({ ...dataWithoutId, _id }));
         } else {
-
-            await dispatch(addSuppliers(productData));
+            await dispatch(addSuppliers(dataToSend));
         }
         onClose(false);
         reset();
@@ -63,11 +65,8 @@ const SuppliersForm = ({ onClose, supplier }) => {
     };
 
     const categoryOptions = [
-        {
-            value: 'Active', label: 'Active'
-        },
+        { value: 'Active', label: 'Active' },
         { value: 'Deactive', label: 'Deactive' },
-
     ];
 
     return (
@@ -76,13 +75,13 @@ const SuppliersForm = ({ onClose, supplier }) => {
                 <Container>
                     <RowBox>
                         <InputField name="name" type="text" placeholder="Suppliers Info" />
-
                         <InputField name="address" type="text" placeholder="Address" />
                     </RowBox>
                     <RowBox>
                         <InputField name="suppliers" type="text" placeholder="Company" />
-                        <DeliveryPicker name="date" />
-                    </RowBox><RowBox>
+                        <DeliveryPicker name="date" isNew={isNew} />
+                    </RowBox>
+                    <RowBox>
                         <InputField name="amount" type="text" placeholder="Amount" />
                         <SelectField name="status" options={categoryOptions} />
                     </RowBox>
@@ -91,7 +90,8 @@ const SuppliersForm = ({ onClose, supplier }) => {
                         <CustomButton type="button" $cancel="true" onClick={handleCancel}>
                             Cancel
                         </CustomButton>
-                    </Box></Container>
+                    </Box>
+                </Container>
             </FormContainer>
         </FormProvider>
     );
