@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import loginImageMobile from 'img/img/mobile/pill1x.webp';
-import loginImageMobile2 from 'img/img/mobile/pill2x.webp';
 import loginImageTablet from 'img/img/tablet/pill1x.webp';
-import loginImageTablet2 from 'img/img/tablet/pill2x.webp';
 import loginImageDesktop from 'img/img/desktop/pill1x.webp';
 import loginImageDesktop2 from 'img/img/desktop/pill2x.webp';
 
