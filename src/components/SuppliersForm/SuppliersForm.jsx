@@ -43,16 +43,16 @@ const SuppliersForm = ({ onClose, supplier }) => {
         }
     }, [supplier, setValue]);
 
-    const handleAddOrUpdate = (productData) => {
+    const handleAddOrUpdate = async (productData) => {
 
         if (supplier) {
             const { _id, id, ...dataWithoutId } = productData;
 
-            dispatch(editSuppliers({ dataWithoutId, _id }));
+            await dispatch(editSuppliers({ dataWithoutId, _id }));
 
         } else {
 
-            dispatch(addSuppliers(productData));
+            await dispatch(addSuppliers(productData));
         }
         onClose(false);
         reset();

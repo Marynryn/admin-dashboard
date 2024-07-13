@@ -106,7 +106,7 @@ export const BoxName = styled.div`
   }
 `;
 
-export const Name = styled.h4`
+export const Name = styled.h3`
   margin: 0;
 `;
 

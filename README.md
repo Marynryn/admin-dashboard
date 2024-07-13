@@ -1,34 +1,54 @@
-# Event Application
+# Admin Dashboard
 
-This project was created with
-[Create React App](https://github.com/facebook/create-react-app). To get
-acquainted and configure additional features
-[refer to documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Welcome to the Admin Dashboard project repository!
 
-## Creating a repository by template
+This project aims to create an administrative dashboard for a medical store, providing a platform to manage products, suppliers, orders, and customer data.
 
-Use this repository as a template for creating a repository
-of your project. To use it just tap the `«Use this template»` button and choose
-`«Create a new repository»` option, as you can see on the image below.
+## Table of Contents
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+- [About the Project](#about-the-project)
+- [Main Features](#main-features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [API Documentation](#api-documentation)
+- [Design and Mockups](#design-and-mockups)
 
-The page for creating a new repository will open on the next step. Fill out
-the Name field and make sure the repository is public, then click
-`«Create repository from template»` button.
+## About the Project
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+The Medicine Store Admin Dashboard is a web application designed to help administrators manage various aspects of a medical store. The application includes functionalities such as user authentication, product management, order tracking, and data visualization.
 
-You now have a personal project repository, having a repository-template file
-and folder structure. After that, you can work with it as you would with any
-other private repository: clone it on your computer, write code, commit, and
-send it to GitHub.
+## Main Features
 
-## Preparing for coding
+- **Responsive Design**: The application is fully responsive, with layouts optimized for mobile, tablet, and desktop devices.
+- **User Authentication**: User can log in to access the application. Only users with admin privileges are allowed to log in, ensuring the security of information
+- **Dashboard Overview**: A summary view of key metrics like sales, expenses, and recent activity.
+- **Product Management**: Administrators can add, update, and delete product information.
+- **Order Management**: Track and manage customer orders.
+- **Supplier Management**: Maintain a list of suppliers with contact details and manage supply orders.
+- **Customer Management**: Manage customer information and view order history.
 
-1. Make sure you have an LTS version of Node.js installed on your computer.
-   [Download and install](https://nodejs.org/en/) if needed.
-2. Install the project's base dependencies with the `npm install` command.
-3. Start development mode by running the `npm start` command.
-4. Go to [http://localhost:3000](http://localhost:3000) in your browser. This
-   page will automatically reload after saving changes to the project files.
+## Technologies Used
+
+### Frontend:
+
+- HTML5, CSS3, JavaScript (ES6+)
+- React.js for building the user interface
+- Redux for state management
+- React Router for client-side routing
+- Axios for making API requests
+- Formik and Yup for form validation
+- Styled-components for styling
+
+### Backend:
+
+- Node.js and Express.js for the server
+- MongoDB for the database
+- JWT for authentication
+
+## Setup Instructions
+
+### Clone the repository:
+
+```sh
+git clone https://github.com/your-username/medicine-store-admin-dashboard.git
+```

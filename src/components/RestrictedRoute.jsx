@@ -5,5 +5,5 @@ import { IsLoggedIn } from '../helpers/isLoggedIn';
 export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
     const { isLogIn } = IsLoggedIn();
 
-    return isLogIn ? <Navigate to={redirectTo} /> : Component;
+    return !isLogIn ? Component : <Navigate to={redirectTo} />;
 };

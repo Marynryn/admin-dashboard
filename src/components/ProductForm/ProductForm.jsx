@@ -65,16 +65,16 @@ const ProductForm = ({ onClose, product }) => {
         }
     }, [product, setValue]);
 
-    const handleAddOrUpdateProduct = (productData) => {
+    const handleAddOrUpdateProduct = async (productData) => {
 
         if (product) {
             const { _id, id, ...dataWithoutId } = productData;
 
-            dispatch(editProduct({ dataWithoutId, _id }));
+            await dispatch(editProduct({ dataWithoutId, _id }));
 
         } else {
 
-            dispatch(addProduct(productData));
+            await dispatch(addProduct(productData));
         }
         onClose(false);
         reset();

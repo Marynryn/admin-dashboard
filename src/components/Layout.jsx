@@ -32,7 +32,7 @@ width: 1440px;
     }
 `;
 
-export const Layout = () => {
+const Layout = () => {
 
 
     return (
@@ -53,3 +53,4 @@ export const Layout = () => {
         </Container >
     );
 };
+export default Layout

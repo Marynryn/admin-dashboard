@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
-import loginImageMobile from 'img/img/mobile/white-round-pill-1x.webp';
-import loginImageMobile2 from 'img/img/mobile/white-round-pill-2x.webp';
-import loginImageTablet from 'img/img/tablet/white-round-pill-1x.webp';
-import loginImageTablet2 from 'img/img/tablet/white-round-pill-2x.webp';
-import loginImageDesktop from 'img/img/desktop/white-round-pill-1x.webp';
-import loginImageDesktop2 from 'img/img/desktop/white-round-pill-2x.webp';
+import loginImageMobile from 'img/img/mobile/pill1x.webp';
+import loginImageMobile2 from 'img/img/mobile/pill2x.webp';
+import loginImageTablet from 'img/img/tablet/pill1x.webp';
+import loginImageTablet2 from 'img/img/tablet/pill2x.webp';
+import loginImageDesktop from 'img/img/desktop/pill1x.webp';
+import loginImageDesktop2 from 'img/img/desktop/pill2x.webp';
 
 const Title = styled.h1`
 
@@ -23,7 +23,7 @@ line-height: 34px;
      line-height: 60px;
 }
  `;
-const Image = styled.picture`
+const Image = styled.img`
 
 
 position: absolute;
@@ -53,30 +53,17 @@ width: 614px;
 const WelcomeText = () => {
   return (
     <Container  >
-      <Image>
-        <source
-          srcSet={`
-    ${loginImageMobile} 1x, 
-    ${loginImageMobile2} 2x
-  `}
-          media="(min-width: 375px)"
-        />
-        <source
-          srcSet={`
-    ${loginImageTablet} 1x, 
-    ${loginImageTablet2} 2x
-  `}
-          media="(min-width: 768px)"
-        />
-        <source
-          srcSet={`
-    ${loginImageDesktop} 1x, 
-    ${loginImageDesktop2} 2x
-  `}
-          media="(min-width: 1440px)"
-        />
-        <img src={loginImageTablet} alt="tablet" />
-      </Image>
+
+      <Image
+        srcSet={`
+          ${loginImageDesktop} 1x,
+          ${loginImageDesktop2} 2x
+        `}
+        sizes="(min-width: 1280px) 100vw, (min-width: 768px) 50vw, 100vw"
+        src={loginImageTablet}
+        alt="tablet"
+      />
+
       <Title>Your medication, delivered Say goodbye to all<span style={{ color: "var(--green)" }}> your healthcare </span> worries with us</Title>
     </Container>
   )

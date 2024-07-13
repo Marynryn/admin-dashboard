@@ -53,7 +53,7 @@ export const getRowValue = (row, column) => {
       return (
         <Text
           color={getColorByStatus(row.status)}
-          bgcolor={getBgColorByStatus(row.status)}
+          $bgcolor={getBgColorByStatus(row.status)}
         >
           {row.status}
         </Text>
