@@ -52,3 +52,12 @@ The Medicine Store Admin Dashboard is a web application designed to help adminis
 ```sh
 git clone https://github.com/your-username/medicine-store-admin-dashboard.git
 ```
+
+
+Here are the login details for the application:
+
+
+**Email**: example@gmail.com
+**Password**: 99999999
+
+If you have any questions or issues with accessing the application, please feel free to contact me.
