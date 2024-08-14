@@ -17,8 +17,6 @@ html {
   background-color: var(--background-2);
 }
 #root {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
 }
 ul {

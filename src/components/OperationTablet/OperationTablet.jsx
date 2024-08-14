@@ -7,7 +7,7 @@ import styled from 'styled-components';
 export const Text = styled.div`
   
      color: ${props => props.color};
-     padding: 4px;
+     padding: 5px;
      max-width: 80px;
     background-color:  ${$props => $props.bgcolor};
     border-radius: 40px;
@@ -55,9 +55,9 @@ const OperationTablet = ({ columns, data, title }) => {
                     <tbody>
                         {data.map((row, rowIndex) => (
                             <tr key={rowIndex}>
-                                <td style={{ borderLeft: "none", borderRight: "none" }}><Text color={getColorByType(row.type)} $bgcolor={getBgColorByType(row.type)}>{row.type}</Text></td>
-                                <td style={{ borderLeft: "none", borderRight: "none" }}>{row.name}</td>
-                                <td style={{ borderLeft: "none", borderRight: "none" }}><Text color={getColorByType(row.type)} $isError={row.type === 'Error'}>{row.amount}</Text></td>
+                                <td style={{ borderLeft: "none", borderRight: "none", }}><Text color={getColorByType(row.type)} $bgcolor={getBgColorByType(row.type)}>{row.type}</Text></td>
+                                <td style={{ borderLeft: "none", borderRight: "none", }}>{row.name}</td>
+                                <td style={{ borderLeft: "none", borderRight: "none", }}><Text color={getColorByType(row.type)} $isError={row.type === 'Error'}>{row.amount}</Text></td>
                             </tr>
                         ))}
                     </tbody>

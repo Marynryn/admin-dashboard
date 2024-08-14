@@ -17,7 +17,8 @@ margin-top: 40px;
 const Box = styled.div`
 display: flex;
 flex-direction: column;
-gap: 14px;
+gap: 20px;
+position: relative;
 
 `;
 const Form = styled.form`
@@ -63,9 +64,10 @@ const RegistrationForm = () => {
 
 
                 <Box >
-
-                    <InputField type="email" name="email" label="Email" placeholder="Email address" />
+                    <span style={{ fontSize: "10px", textAlign: "right", position: "absolute", top: "-20px", right: "10px" }}>example@gmail.com</span>
+                    <InputField type="email" name="email" label="Email " placeholder="Email address" />
                     <div style={{ position: "relative" }}>
+                        <span style={{ fontSize: "10px", textAlign: "right", position: "absolute", top: "-15px", right: "10px" }}>99999999</span>
                         <InputField type={showPassword ? 'text' : 'password'} name="password" label="Password" placeholder="Password" />
                         <ButtonEye onClick={handleClickShowPassword}>
                             {showPassword ? (
