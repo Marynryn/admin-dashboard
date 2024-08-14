@@ -2,8 +2,7 @@ import Logo from "components/Logo/Logo";
 import RegistrationForm from "components/RegistrationForm/RegistrationForm";
 import WelcomeText from "components/WelcomeText/WelcomeText";
 import styled from "styled-components";
-import Image from "img/img/elements.webp"
-import RetinaImage from "img/img/elements2x.webp"
+
 const Container = styled.div`
     padding: 24px 20px;
 
